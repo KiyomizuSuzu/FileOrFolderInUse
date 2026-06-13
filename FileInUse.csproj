@@ -10,5 +10,6 @@
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <NoWarn>IL2104</NoWarn>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 </Project>
