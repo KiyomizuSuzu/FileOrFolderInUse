@@ -3,8 +3,10 @@ This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/o
 
 ## Context Menu Integration
 Add the following registry entries:
-- `HKEY_CLASSES_ROOT\*\shell\FileInUse\command` with default value `"C:\Path\To\FileInUse.exe" %*`
-- `HKEY_CLASSES_ROOT\Directory\shell\FileInUse\command` with default value `"C:\Path\To\FileInUse.exe" %*`
+- `HKEY_CLASSES_ROOT\*\shell\FileInUse` with (Default) value `Show file handles`
+- `HKEY_CLASSES_ROOT\*\shell\FileInUse\command` with (Default) value `"C:\Path\To\FileInUse.exe" %*`
+- `HKEY_CLASSES_ROOT\Directory\shell\FileInUse` with (Default) value `Show file handles`
+- `HKEY_CLASSES_ROOT\Directory\shell\FileInUse\command` with (Default) value `"C:\Path\To\FileInUse.exe" %*`
 
 ### How to use
 1. Download Handle v5.0 from https://learn.microsoft.com/en-us/sysinternals/downloads/handle and place `handle.exe`, `handle64.exe`, `handleArm64.exe` in the same folder as `FileInUse.exe`.
