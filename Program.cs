@@ -48,16 +48,16 @@ namespace FileInUse {
                     bool isSysFile = Path.GetExtension(path).Equals(".sys", StringComparison.OrdinalIgnoreCase);
                     if (isSysFile) {
                         MessageBox.Show(
-                            "No user-mode processes detected.\nKernel drivers may still be using this file.",
-                            "Driver File",
+                            "One or more .sys drivers are present!\nThey may still be in use...",
+                            "Unsure If Available Or Not",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning
                         );
                     }
                     else{
                         MessageBox.Show(
-                            "File is not currently in use.",
-                            "Not in Use",
+                            "File or folder is not currently in use.",
+                            "Already Available",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
