@@ -1,5 +1,5 @@
 # FileInUse
-This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/overview) Graphical User Interface made in C# that integrates the [Microsoft's Sysinternals Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) to identify processes using a file or directory.
+This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/overview) Graphical User Interface made in C# that integrates the [Microsoft's Sysinternals Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) to identify processes using a file or directory, with the option to close them.
 
 ## Context Menu Integration
 Add the following registry entries:
