@@ -86,12 +86,18 @@ namespace FileInUse {
                         item.SubItems.Add(list.Value.Count.ToString());
                         listView.Items.Add(item);
                     }
+                    Label titleLabel = new() {
+                        Text = "Terminate these processes?",
+                        Dock = DockStyle.Fill,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Font = new Font("Cascadia Code", 16f)
+                    };
                     Panel buttonPanel = new() {
                         Dock = DockStyle.Bottom,
                         Height = 50
                     };
                     Button noButton = new() {
-                        Font = new Font("Cascadia Code", 10f),
+                        Font = new Font("Cascadia Code", 12f),
                         Text = "No",
                         DialogResult = DialogResult.No,
                         Width = 100,
@@ -100,7 +106,7 @@ namespace FileInUse {
                         Dock = DockStyle.Left
                     };
                     Button yesButton = new() {
-                        Font = new Font("Cascadia Code", 10f),
+                        Font = new Font("Cascadia Code", 12f),
                         Text = "Yes",
                         DialogResult = DialogResult.Yes,
                         Width = 100,
@@ -116,6 +122,7 @@ namespace FileInUse {
                     }
                     AddHover(yesButton);
                     AddHover(noButton);
+                    buttonPanel.Controls.Add(titleLabel);
                     buttonPanel.Controls.Add(noButton);
                     buttonPanel.Controls.Add(yesButton);
                     form.Controls.Add(listView);
