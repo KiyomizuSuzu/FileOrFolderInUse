@@ -1,15 +1,15 @@
-# FileInUse
+# FileOrFolderInUse
 This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/overview) Graphical User Interface made in C# that integrates the [Microsoft's Sysinternals Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) to identify processes using a file or directory, with the option to close them.
 
 ## Context Menu Integration
 Add the following registry entries:
-- `HKEY_CLASSES_ROOT\*\shell\FileInUse` with (Default) value `Show file handles`
-- `HKEY_CLASSES_ROOT\*\shell\FileInUse\command` with (Default) value `"C:\Path\To\FileInUse.exe" %*`
-- `HKEY_CLASSES_ROOT\Directory\shell\FileInUse` with (Default) value `Show folder handles`
-- `HKEY_CLASSES_ROOT\Directory\shell\FileInUse\command` with (Default) value `"C:\Path\To\FileInUse.exe" %*`
+- `HKEY_CLASSES_ROOT\*\shell\FileOrFolderInUse` with (Default) value `Show file handles`
+- `HKEY_CLASSES_ROOT\*\shell\FileOrFolderInUse\command` with (Default) value `"C:\Path\To\FileOrFolderInUse.exe" %*`
+- `HKEY_CLASSES_ROOT\Directory\shell\FileOrFolderInUse` with (Default) value `Show folder handles`
+- `HKEY_CLASSES_ROOT\Directory\shell\FileOrFolderInUse\command` with (Default) value `"C:\Path\To\FileOrFolderInUse.exe" %*`
 
 ### How to use
-1. Download Handle v5.0 from https://learn.microsoft.com/en-us/sysinternals/downloads/handle and place `handle.exe`, `handle64.exe`, `handle64a.exe` in the same folder as `FileInUse.exe`.
+1. Download Handle v5.0 from https://learn.microsoft.com/en-us/sysinternals/downloads/handle and place `handle.exe`, `handle64.exe`, `handle64a.exe` in the same folder as `FileOrFolderInUse.exe`.
 2. Specify one or more (files or directories) to inspect:
 ```powershell
 FileInUse "C:\Path\To\File.txt" "C:\Path\To\Directory"
