@@ -2,7 +2,7 @@
 This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/overview) Graphical User Interface made in C# that integrates the [Microsoft's Sysinternals Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) to identify processes using a file or directory.
 
 ### How to use
-1. Download Handle v5.0 from https://learn.microsoft.com/en-us/sysinternals/downloads/handle and place 'handle.exe','handle64.exe','handleArm64.exe' in the same folder as `FileInUse.exe`.
+1. Download Handle v5.0 from https://learn.microsoft.com/en-us/sysinternals/downloads/handle and place `handle.exe`, `handle64.exe`, `handleArm64.exe` in the same folder as `FileInUse.exe`.
 2. Specify one or more files or directories to inspect:
 
 ```powershell
