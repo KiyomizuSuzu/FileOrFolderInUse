@@ -3,9 +3,9 @@ This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/o
 
 ## Context Menu Integration
 Add the following registry entries:
-- `HKEY_CLASSES_ROOT\*\shell\FileInUse` with (Default) value `Scan file handles`
+- `HKEY_CLASSES_ROOT\*\shell\FileInUse` with (Default) value `Show file handles`
 - `HKEY_CLASSES_ROOT\*\shell\FileInUse\command` with (Default) value `"C:\Path\To\FileInUse.exe" %*`
-- `HKEY_CLASSES_ROOT\Directory\shell\FileInUse` with (Default) value `Scan file handles`
+- `HKEY_CLASSES_ROOT\Directory\shell\FileInUse` with (Default) value `Show folder handles`
 - `HKEY_CLASSES_ROOT\Directory\shell\FileInUse\command` with (Default) value `"C:\Path\To\FileInUse.exe" %*`
 
 ### How to use
