@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 //EXECUTION
-namespace FileInUse {
+namespace FileOrFolderInUse {
     internal class Program {
         static void Main(string[] args) {
             string? filePath = args.Length > 0 ? args[0] : null;
