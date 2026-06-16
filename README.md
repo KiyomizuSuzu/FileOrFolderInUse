@@ -19,6 +19,7 @@ FileInUse "C:\Path\To\File.txt" "C:\Path\To\Directory"
 ### How it works (Flowchart)
 ---
 ![Flowchart](FileOrFolderInUse.drawio.svg)
+
 ---
 
 ### To build the source code
