@@ -1,4 +1,3 @@
-![Flowchart](FileOrFolderInUse.drawio.svg)
 # FileOrFolderInUse
 This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/overview) Graphical User Interface made in C# that integrates the [Microsoft's Sysinternals Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) to identify processes using a file or directory, with the option to close them.
 
@@ -16,6 +15,9 @@ Add the following registry entries:
 FileInUse "C:\Path\To\File.txt" "C:\Path\To\Directory"
 ```
 3. Confirm Yes or No to close these processes or not. <br><br><img src="UI.png" width="400" />
+
+### How it works
+![Flowchart](FileOrFolderInUse.drawio.svg)
 
 ### To build the source code
 Ensure you have .NET 10 SDK installed from https://dotnet.microsoft.com/en-us/download/dotnet/10.0
