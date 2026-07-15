@@ -1,3 +1,6 @@
 # CSharp build output
 /bin
 /obj
+
+# CSharp debug assets
+/.vscode
