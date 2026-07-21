@@ -38,8 +38,7 @@ AGPL-3.0に従う以上、対象コードは同じライセンスのまま維持
 </details>
 
 ---
-<details open>
-<summary>English</summary>
+<details open><summary>English</summary>
 
 # FileOrFolderInUse
 This is a [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/overview) Graphical User Interface made in C# that integrates the [Microsoft's Sysinternals Handle](https://learn.microsoft.com/en-us/sysinternals/downloads/handle) to identify processes using a file or directory, with the option to close them.
