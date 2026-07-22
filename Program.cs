@@ -19,12 +19,21 @@ namespace FileOrFolderInUse {
     internal class Handle {
         public static void Scan(string path) {
             string baseDir = AppContext.BaseDirectory;
-            string handlePath = RuntimeInformation.OSArchitecture switch {
-                                Architecture.X64 => Path.Combine(baseDir, "handle64.exe"),
-                                Architecture.X86 => Path.Combine(baseDir, "handle.exe"),
-                                Architecture.Arm64 => Path.Combine(baseDir, "handle64a.exe"),
-                                _ => throw new NotSupportedException($"Unsupported architecture: {RuntimeInformation.OSArchitecture}"),
-                            };
+            string? handlePath = null;
+            switch (RuntimeInformation.OSArchitecture) {
+                case Architecture.X64:
+                    handlePath = Path.Combine(baseDir, "handle64.exe");
+                    break;
+                case Architecture.X86:
+                    handlePath = Path.Combine(baseDir, "handle.exe");
+                    break;
+                case Architecture.Arm64:
+                    handlePath = Path.Combine(baseDir, "handle64a.exe");
+                    break;
+                default:
+                    Console.WriteLine($"Unsupported architecture: {RuntimeInformation.OSArchitecture}");
+                    return;
+            }
             ProcessStartInfo startInfo = new() {
                 FileName = handlePath,
                 Arguments = $"\"{path}\" -u",
@@ -66,7 +75,7 @@ namespace FileOrFolderInUse {
                 else {
                     Form form = new() {
                         Text = "Confirmation",
-                        Width = 670,
+                        Width = 680,
                         Height = 420,
                         StartPosition = FormStartPosition.CenterScreen
                     };
@@ -79,7 +88,7 @@ namespace FileOrFolderInUse {
                     };
                     listView.Columns.Add("PID", 80);
                     listView.Columns.Add("Name", 450);
-                    listView.Columns.Add("Open Handles", 100, HorizontalAlignment.Center);
+                    listView.Columns.Add("Open Handles", 110, HorizontalAlignment.Center);
                     foreach (KeyValuePair<int, (string Name, int Count)> list in processes) {
                         ListViewItem item = new(list.Key.ToString());
                         item.SubItems.Add(list.Value.Name);
@@ -195,7 +204,7 @@ namespace FileOrFolderInUse {
                     bool notUser = type != ProcessType.User;
                     bool outsideTargetPath = !exe!.StartsWith(targetPath, StringComparison.OrdinalIgnoreCase);
                     if (notExecutable || outsideTargetPath || notUser) {
-                        throw new Exception();
+                        continue;
                     }
                     else {
                         bool pidExists = result.TryGetValue(running.Id, out (string Name, int Count) existing);
@@ -207,48 +216,43 @@ namespace FileOrFolderInUse {
                         }
                     }
                 }
-                catch {
-                    continue;
+                catch (Exception) {
+                    continue; // For protected processes unable to read
                 }
             }
         }
         private static Dictionary<int, (string Name, int Count)> Parse(string output) {
             Dictionary<int, (string Name, int Count)> result = [];
             string[] lines = output.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
-            foreach (string line in lines) {
-                try {
+                foreach (string line in lines) {
                     bool notPid = !line.Contains("pid:");
                     if (notPid) {
                         continue;
                     }
                     else {
-                        throw new Exception();
-                    }
-                }
-                catch {
-                    string[] parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    string processName = parts.Length > 0 ? parts[0] : "unknown";
-                    for (int i = 0; i < parts.Length; i++) {
-                        bool hasPidValue = parts[i] == "pid:" && i + 1 < parts.Length;
-                        if (hasPidValue) {
-                            bool validPid = int.TryParse(parts[i + 1], out int pid);
-                            if (validPid) {
-                                bool foundPidEntry = result.TryGetValue(pid, out (string Name, int Count) value);
-                                if (foundPidEntry) {
-                                    result[pid] = (processName, value.Count + 1);
+                        string[] parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                        string processName = parts.Length > 0 ? parts[0] : "unknown";
+                        for (int i = 0; i < parts.Length; i++) {
+                            bool hasPidValue = parts[i] == "pid:" && i + 1 < parts.Length;
+                            if (hasPidValue) {
+                                bool validPid = int.TryParse(parts[i + 1], out int pid);
+                                if (validPid) {
+                                    bool foundPidEntry = result.TryGetValue(pid, out (string Name, int Count) value);
+                                    if (foundPidEntry) {
+                                        result[pid] = (processName, value.Count + 1);
+                                    }
+                                    else {
+                                        result[pid] = (processName, 1);
+                                    }
                                 }
                                 else {
-                                    result[pid] = (processName, 1);
+                                    break;
                                 }
-                            }
-                            else {
-                                break;
                             }
                         }
                     }
                 }
-            }
-            return result;
+                return result;
         }
     }
 }
