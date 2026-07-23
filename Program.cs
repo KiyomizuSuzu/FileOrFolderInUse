@@ -235,8 +235,11 @@ namespace FileOrFolderInUse {
                         for (int i = 0; i < parts.Length; i++) {
                             bool hasPidValue = parts[i] == "pid:" && i + 1 < parts.Length;
                             if (hasPidValue) {
-                                bool validPid = int.TryParse(parts[i + 1], out int pid);
-                                if (validPid) {
+                                bool notValidPid = !int.TryParse(parts[i + 1], out int pid);
+                                if (notValidPid) {
+                                    break;
+                                }
+                                else {
                                     bool foundPidEntry = result.TryGetValue(pid, out (string Name, int Count) value);
                                     if (foundPidEntry) {
                                         result[pid] = (processName, value.Count + 1);
@@ -244,9 +247,6 @@ namespace FileOrFolderInUse {
                                     else {
                                         result[pid] = (processName, 1);
                                     }
-                                }
-                                else {
-                                    break;
                                 }
                             }
                         }
