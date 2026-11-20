@@ -21,7 +21,7 @@ FileOrFolderInUse "C:\Path\To\File.txt" "C:\Path\To\Directory"
 
 ---
 ### ビルド方法
-.NET 10 SDKが必要。https://dotnet.microsoft.com/ja-jp/download/dotnet/10.0 からインストールできる。
+.NET 11 SDKが必要。https://dotnet.microsoft.com/ja-jp/download/dotnet/11.0 からインストールできる。
 
 リポジトリのルートでPowerShellを開き、以下を実行するだけ。
 ```powershell
@@ -61,7 +61,7 @@ FileOrFolderInUse "C:\Path\To\File.txt" "C:\Path\To\Directory"
 
 ---
 ### To build the source code
-Ensure you have .NET 10 SDK installed from https://dotnet.microsoft.com/en-us/download/dotnet/10.0
+Ensure you have .NET 11 SDK installed from https://dotnet.microsoft.com/en-us/download/dotnet/11.0
 
 Then, open up Powershell in the repository root directory and run the following command:
 ```powershell
